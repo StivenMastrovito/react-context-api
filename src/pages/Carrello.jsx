@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
 import GoBack from "../components/GoBack";
+import { useCarrello } from "../context/CarrelloContext";
 
-export default function Carrello({ listaCarrello, setListaCarrello }) {
+export default function Carrello() {
+    const {listaCarrello, removeCarrello} = useCarrello();
 
-    function eliminaProdottoCarrello(indexDelete, event) {
-        const copyArray = listaCarrello.filter((prodotto, indice) => indice !== indexDelete);
-        console.log(copyArray)
-        setListaCarrello(copyArray);
-    }
     const [tot, setTot] = useState(0);
-
-
     useEffect(() => {
         let somma = 0;
         listaCarrello.forEach(({ prezzo }) => {
@@ -41,7 +36,7 @@ export default function Carrello({ listaCarrello, setListaCarrello }) {
                                     <p className="mb-10">{prodotto.titolo}</p>
                                     <p>€ {prodotto.prezzo}</p>
                                 </div>
-                                <span className="elimina-carrello" onClick={(event) => eliminaProdottoCarrello(index, event)}><i className="bi bi-cart-x"></i></span>
+                                <span className="elimina-carrello" onClick={() => removeCarrello(index)}><i className="bi bi-cart-x"></i></span>
                             </div>
                         </div>
                     ))}

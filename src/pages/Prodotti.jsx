@@ -4,12 +4,15 @@ import { Link } from "react-router-dom";
 import GoBack from "../components/GoBack";
 import Loading from "../components/Loading";
 import { useBudget } from "../context/BudgetContext";
+import { useCarrello } from "../context/CarrelloContext";
 
 
-export default function Prodotti({ listaCarrello, setListaCarrello, prodotti, load }) {
+export default function Prodotti({prodotti, load }) {
     const [prodottiFiltrati, setProdottiFiltrati] = useState([]);
     const [filtroCategoria, setFiltroCategoria] = useState("");
     const [categorieProdotti, setCategorieProdotti] = useState([]);
+
+    const {addCarrello} = useCarrello();
 
     const { budgetMode } = useBudget();
     useEffect(() => {
@@ -39,18 +42,6 @@ export default function Prodotti({ listaCarrello, setListaCarrello, prodotti, lo
             setProdottiFiltrati(copyArray);
         }
     }, [filtroCategoria])
-
-    function addCarrello(prodotto) {
-        const newProduct = {
-            titolo: prodotto.title,
-            prezzo: prodotto.price,
-            image: prodotto.image,
-            id: prodotto.id,
-        }
-        const newArray =
-            setListaCarrello([...listaCarrello, newProduct]);
-    }
-
 
     return (
         <>

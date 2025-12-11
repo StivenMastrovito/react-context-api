@@ -3,14 +3,17 @@ import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios";
 import GoBack from "../components/GoBack";
 import Loading from "../components/Loading";
+import { useCarrello } from "../context/CarrelloContext";
 
-export default function SingoloProdotto({listaCarrello, setListaCarrello}) {
+export default function SingoloProdotto() {
     let { id } = useParams();
     const navigate = useNavigate();
     const [singoloProdotto, setSingoloProdotto] = useState(null);
     const [index, setIndex] = useState(id);
     const [maxIndex, setMaxIndex] = useState(100)
     const [load, setLoad] = useState(true);
+
+    const {addCarrello} = useCarrello();
 
     useEffect(() => {
         setLoad(true);
@@ -32,17 +35,6 @@ export default function SingoloProdotto({listaCarrello, setListaCarrello}) {
     }
     function prodottoSuccessivo() {
         setIndex((current) => parseInt(current) + 1);
-    }
-
-    function addCarrello(prodotto){
-        const newProduct = {
-            titolo: prodotto.title,
-            prezzo: prodotto.price,
-            image: prodotto.image,
-            id: prodotto.id,
-        }
-        const newArray = 
-        setListaCarrello([...listaCarrello, newProduct]);
     }
 
     return (
