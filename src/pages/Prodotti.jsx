@@ -5,12 +5,15 @@ import GoBack from "../components/GoBack";
 import Loading from "../components/Loading";
 import { useBudget } from "../context/BudgetContext";
 import { useCarrello } from "../context/CarrelloContext";
+import { usePreferiti } from "../context/PreferitiContext";
 
 
 export default function Prodotti({prodotti, load }) {
     const [prodottiFiltrati, setProdottiFiltrati] = useState([]);
     const [filtroCategoria, setFiltroCategoria] = useState("");
     const [categorieProdotti, setCategorieProdotti] = useState([]);
+
+    const {isPreferito, addPreferito, removePreferito} = usePreferiti();
 
     const {addCarrello} = useCarrello();
 
@@ -69,10 +72,12 @@ export default function Prodotti({prodotti, load }) {
 
                 <div className="griglia">
                     {prodottiFiltrati.map((prodotto) => (
-                        <div key={prodotto.id} className="col">
+                        <div key={prodotto.id} className="col relative">
                             <Link to={`/prodotti/${prodotto.id}`} className="col-img">
                                 <img src={prodotto.image} alt="" />
                             </Link>
+                            <span onClick={()=>{isPreferito(prodotto.id) ? removePreferito(prodotto.id) : addPreferito(prodotto.id)}} className="preferiti">{isPreferito(prodotto.id) ? <i className="bi bi-suit-heart-fill"></i> : <i className="bi bi-suit-heart"></i>}</span>
+
                             <div className="col-content">
                                 <span className="aggiungi_carrello" onClick={() => addCarrello(prodotto)}><i className="bi bi-cart"></i></span>
                                 <Link to={`/prodotti/${prodotto.id}`} className="titolo">{prodotto.title}</Link>

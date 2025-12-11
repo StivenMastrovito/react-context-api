@@ -77,6 +77,22 @@ main {
   display: flex;
 }
 
+.relative {
+  position: relative;
+}
+
+.preferiti {
+  position: absolute;
+  right: -1px;
+  top: 8%;
+  color: red;
+  background-color: orange;
+  padding: 10px 10px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+
 /* LOADING */
 .loading {
   display: flex;

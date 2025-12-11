@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import GoBack from "../components/GoBack";
 import { useCarrello } from "../context/CarrelloContext";
+import { usePreferiti } from "../context/PreferitiContext";
 
 export default function Carrello() {
-    const {listaCarrello, removeCarrello} = useCarrello();
+    const { listaCarrello, removeCarrello } = useCarrello();
+
+    const {isPreferito, addPreferito, removePreferito} = usePreferiti();
 
     const [tot, setTot] = useState(0);
     useEffect(() => {
@@ -28,8 +31,9 @@ export default function Carrello() {
                 <div className="griglia">
                     {listaCarrello.map((prodotto, index) => (
                         <div key={index} className="col_carrello">
-                            <div className="col-img-carrello">
+                            <div className="col-img-carrello relative">
                                 <img src={prodotto.image} alt="" />
+                                <span onClick={() => { isPreferito(prodotto.id) ? removePreferito(prodotto.id) : addPreferito(prodotto.id) }} className="preferiti">{isPreferito(prodotto.id) ? <i className="bi bi-suit-heart-fill"></i> : <i className="bi bi-suit-heart"></i>}</span>
                             </div>
                             <div className="col-content-carrello">
                                 <div className="">

@@ -14,6 +14,8 @@ export default function SingoloProdotto() {
     const [load, setLoad] = useState(true);
 
     const {addCarrello} = useCarrello();
+    const {isPreferito, addPreferito, removePreferito} = usePreferiti();
+
 
     useEffect(() => {
         setLoad(true);
@@ -44,8 +46,9 @@ export default function SingoloProdotto() {
                 {load && <Loading />}
                 {!load &&
                     <div className="col_carrello">
-                        <div className="col-img-carrello">
+                        <div className="col-img-carrello relative">
                             <img src={singoloProdotto.image} alt="" />
+                            <span onClick={()=>{isPreferito(prodotto.id) ? removePreferito(prodotto.id) : addPreferito(prodotto.id)}} className="preferiti">{isPreferito(prodotto.id) ? <i className="bi bi-suit-heart-fill"></i> : <i className="bi bi-suit-heart"></i>}</span>
                         </div>
                         <div className="col-content-carrello">
                             <p className="fs-2">{singoloProdotto.title}</p>

@@ -12,8 +12,7 @@ function CarrelloProvider({children}) {
             image: prodotto.image,
             id: prodotto.id,
         }
-        const newArray =
-            setListaCarrello([...listaCarrello, newProduct]);
+        const newArray = setListaCarrello([...listaCarrello, newProduct]);
     }
 
     function removeCarrello(indexDelete) {
@@ -26,7 +25,6 @@ function CarrelloProvider({children}) {
         addCarrello,
         removeCarrello,
     }
-    console.log(valueCarrelloContext);
     
     return (
         <CarrelloContext value={valueCarrelloContext}>
@@ -40,4 +38,4 @@ function useCarrello(){
     return value;
 }
 
-export {CarrelloProvider, useCarrello}
+export { CarrelloProvider, useCarrello }

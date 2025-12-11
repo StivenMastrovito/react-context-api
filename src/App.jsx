@@ -11,12 +11,12 @@ import SingoloProdotto from './pages/SingoloProdotto'
 import axios from 'axios'
 import { BudgetProvider } from './context/BudgetContext'
 import { CarrelloProvider, useCarrello } from './context/CarrelloContext'
+import { PreferitiProvider } from './context/PreferitiContext'
+import Preferiti from './pages/Preferiti'
 
 function App() {
   const [prodotti, setProdotti] = useState([]);
   const [load, setLoad] = useState(true);
-  // const { listaCarrello } = useCarrello();
- 
   useEffect(() => {
     setLoad(true);
     axios.get("https://fakestoreapi.com/products").then((resp) => {
@@ -25,16 +25,14 @@ function App() {
     })
   }, [])
 
-  CarrelloProvider();
-
   return (
     <>
       <CarrelloProvider>
-        <BudgetProvider>
+        <PreferitiProvider>
+          <BudgetProvider>
           <BrowserRouter>
             <Routes>
-              <Route element={<DefaultLayout
-                countCarrello={listaCarrello.length} />}>
+              <Route element={<DefaultLayout />}>
                 <Route path='/' element={<Home />} />
                 <Route path='/prodotti' element={<Prodotti
                   prodotti={prodotti}
@@ -44,11 +42,14 @@ function App() {
                 />} />
                 <Route path='/prodotti/:id' element={<SingoloProdotto
                 />} />
+                <Route path="/preferiti" element={<Preferiti 
+                prodotti={prodotti}/>} />
                 <Route path='*' element={<NotFound />} />
               </Route>
             </Routes>
           </BrowserRouter>
         </BudgetProvider>
+        </PreferitiProvider>
       </CarrelloProvider>
 
     </>

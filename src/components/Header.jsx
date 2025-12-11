@@ -1,8 +1,10 @@
 import { NavLink, Link } from "react-router-dom"
 import { useBudget } from "../context/BudgetContext"
+import { useCarrello } from "../context/CarrelloContext";
 
-export default function Header({countCarrello}){
+export default function Header(){
     const {budgetMode, setBudgetMode} = useBudget();
+    const { listaCarrello } = useCarrello();
     
     const links = [
         {
@@ -18,8 +20,12 @@ export default function Header({countCarrello}){
             path: "/chi-siamo",
         },
         {
-            nome: `Carrello ${countCarrello === 0 ? "" : countCarrello}`,
+            nome: `Carrello ${listaCarrello.length === 0 ? "" : listaCarrello.length}`,
             path: "/carrello",
+        },
+        {
+            nome: `Preferiti`,
+            path: "/preferiti",
         },
 
     ]
@@ -34,8 +40,8 @@ export default function Header({countCarrello}){
                     <li key={index} onClick={link.funzione && (() => setBudgetMode((current) => !current))}><NavLink to={link.path}>{link.nome}</NavLink></li>
                     ))
                     }
-                    <div>
-                        <h3>Inserisci budget</h3>
+                    <div className="flex">
+                        <p>Inserisci budget</p>
                         <input type="number" value={budgetMode} onChange={(event) => {setBudgetMode(event.target.value)}}/>
                     </div>
                 </ul>
