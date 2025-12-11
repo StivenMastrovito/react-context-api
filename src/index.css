@@ -1,0 +1,298 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.active {
+  color: red;
+  border-bottom: 2px solid red;
+}
+
+.container {
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.goBack {
+  background-color: transparent;
+  color: white;
+  font-size: 3rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  background-color: orange;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.py-20 {
+  padding: 20px 0;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.text_blue {
+  color: blue;
+}
+
+.fs-2 {
+  font-size: 1.5rem;
+}
+
+.fw-700 {
+  font-weight: 900;
+}
+
+.flex {
+  display: flex;
+}
+
+/* LOADING */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading img {
+  animation: loading 2s infinite;
+}
+
+/* HEADER */
+
+header {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  background-color: orange;
+  height: 80px;
+  border-bottom: 1px solid orangered;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+header ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  color: white;
+}
+
+/* FINE HEADER */
+
+/* PRODOTTI */
+
+.titolo_prodotti {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 30px 0;
+  color: white;
+}
+
+.griglia {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 30px;
+}
+
+.col {
+  width: 31%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 1px solid white;
+  color: white;
+  font-weight: 700;
+}
+
+.col-img {
+  width: 100%;
+  height: 310px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 10px;
+  background-color: white;
+}
+
+.col-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 20px;
+  position: relative;
+}
+
+input {
+  padding: 5px 5px;
+  border: 0;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.aggiungi_carrello {
+  position: absolute;
+  bottom: 5px;
+  right: 33px;
+  border: 1px solid white;
+  padding: 4px 4px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* FINE PRODOTTI*/
+
+/* HOME */
+.section_hero {
+  height: 450px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 245px;
+  background-image: url(/public/jumboe-commerce.png);
+}
+
+.acquista {
+  background-color: rgba(255, 165, 0, 0.5);
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 0;
+  color: red;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+/* FINE HOME */
+
+/* CARRELLO */
+.header-page {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  color: white;
+  justify-content: space-between;
+}
+
+.container-carrello {
+  max-width: 500px;
+  margin: 0 auto;
+  color: white;
+}
+
+.col_carrello {
+  width: 100%;
+  display: flex;
+  border-radius: 10px;
+  border: 1px solid white;
+  color: white;
+  font-weight: 700;
+}
+
+.col-img-carrello {
+  height: 200px;
+  width: 30%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 10px;
+  background-color: white;
+}
+
+.col-content-carrello {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  position: relative;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.elimina-carrello {
+  padding: 5px 5px;
+  border: 1px solid red;
+  border-radius: 10px;
+  background: red;
+  cursor: pointer;
+}
+
+/* FINE CARRELLO */
+
+/* ERRROR PAGE */
+
+.container-error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid red;
+  background-color: red;
+  height: 100vh;
+}
+
+/*FINE ERRROR PAGE */
+
+/* SINGOLO PRODOTTO */
+
+.cambia-prodotto {
+  display: flex;
+  font-size: 2rem;
+  color: white;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+}
+
+.btn-avanti-dietro {
+  font-size: 2rem;
+  color: white;
+  background-color: transparent;
+  border: none;
+}
+
+/*FINE SINGOLO PRODOTTO */
